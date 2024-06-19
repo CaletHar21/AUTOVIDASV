@@ -1,0 +1,47 @@
+﻿@model IEnumerable<AutoVidaSv.Models.Venta>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Autoid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fechaventa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Valorventa)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Autoid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fechaventa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valorventa)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Ventaid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Ventaid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Ventaid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

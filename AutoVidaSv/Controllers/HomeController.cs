@@ -3,8 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 using System;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Http;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace AutoVidaSv.Controllers
 {
@@ -21,7 +25,51 @@ namespace AutoVidaSv.Controllers
 
         public IActionResult Index()
         {
+            // Obtener vehículos para la sección de alquiler
+            List<Carro> rentaVehiculos = _context.Carros
+            .Include(c => c.Albumcar) // Cargar Albumcar
+            .ToList();
+
+            // Obtener vehículos para la sección de venta
+            List<Carro> ventaVehiculos = _context.Carros
+                .Include(c => c.Albumcar)
+                .Take(4) // Limitar a 4 vehículos
+                .ToList();
+
+            // Preparar las imágenes para el carrusel
+            List<string> imagenes = _context.Albumcars.Select(a => a.Imagen).ToList();
+
+
+            ViewData["RentaVehiculos"] = rentaVehiculos;
+            ViewData["VentaVehiculos"] = ventaVehiculos;
+            ViewData["Imagenes"] = imagenes;
+
             return View();
+        }
+
+        // Método para obtener detalles del vehículo por ID
+        [HttpPost] // Puedes usar [HttpGet] si prefieres GET
+        public IActionResult ObtenerDetalleVehiculo(int vehiculoId)
+        {
+            var vehiculo = _context.Carros
+                .Include(c => c.Albumcar)
+                .FirstOrDefault(c => c.Autoid == vehiculoId);
+
+            if (vehiculo != null)
+            {
+                var detalleVehiculo = new
+                {
+                    marca = vehiculo.Marca,
+                    modelo = vehiculo.Modelo,
+                    transmicion = vehiculo.Transmicion,
+                    anio = vehiculo.Anio,
+                    combustible = vehiculo.Combustible
+                };
+
+                return Json(detalleVehiculo);
+            }
+
+            return NotFound(); // Devuelve un NotFound si no se encuentra el vehículo
         }
 
         public IActionResult Login()
@@ -49,6 +97,8 @@ namespace AutoVidaSv.Controllers
                     // Validar la contraseña
                     if (model.password == usuario.Contrasena)
                     {
+                        HttpContext.Session.SetString("UsuarioID", usuario.Usuarioid.ToString());
+
                         // Autenticación exitosa
                         return Json(new { success = true, message = "Inicio de sesión exitoso", redirect = Url.Action("Index", "Home") });
                     }

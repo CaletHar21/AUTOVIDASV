@@ -1,0 +1,34 @@
+﻿@model IEnumerable<AutoVidaSv.Models.Albumcar>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Imagen</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="data:image;base64,@item.Imagen" alt="Imagen" style="max-width: 100px; max-height: 100px;" />
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Albumcarid">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Albumcarid">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Albumcarid">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

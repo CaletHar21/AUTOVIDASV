@@ -1,0 +1,50 @@
+﻿@model AutoVidaSv.Models.Renta
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Renta</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Fechaentrega" class="control-label"></label>
+                <input asp-for="Fechaentrega" class="form-control" />
+                <span asp-validation-for="Fechaentrega" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fechadevolucion" class="control-label"></label>
+                <input asp-for="Fechadevolucion" class="form-control" />
+                <span asp-validation-for="Fechadevolucion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Totaldedias" class="control-label"></label>
+                <input asp-for="Totaldedias" class="form-control" />
+                <span asp-validation-for="Totaldedias" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Agregardiasextra" class="control-label"></label>
+                <input asp-for="Agregardiasextra" class="form-control" />
+                <span asp-validation-for="Agregardiasextra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Totalacancelar" class="control-label"></label>
+                <input asp-for="Totalacancelar" class="form-control" />
+                <span asp-validation-for="Totalacancelar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

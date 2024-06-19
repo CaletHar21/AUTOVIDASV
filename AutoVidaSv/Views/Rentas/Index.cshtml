@@ -1,0 +1,59 @@
+﻿@model IEnumerable<AutoVidaSv.Models.Renta>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fechaentrega)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fechadevolucion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Totaldedias)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Agregardiasextra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Totalacancelar)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fechaentrega)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fechadevolucion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Totaldedias)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Agregardiasextra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Totalacancelar)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Rentaid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Rentaid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Rentaid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
