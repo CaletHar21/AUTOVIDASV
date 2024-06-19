@@ -7,7 +7,11 @@
 <h1>Index</h1>
 
 <p>
+<<<<<<< HEAD
     <a href="@Url.Action("Create", "Carroes")" class="btn btn-primary">Nuevo Registro</a>
+=======
+    <a asp-action="Create">Create New</a>
+>>>>>>> 28e0bca562d72fb78f6c70cd69d1fdf83f9e913c
 </p>
 <table class="table">
     <thead>
@@ -34,6 +38,7 @@
         </tr>
     </thead>
     <tbody>
+<<<<<<< HEAD
         @foreach (var item in Model)
         {
             <tr>
@@ -62,5 +67,34 @@
                 </td>
             </tr>
         }
+=======
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Anio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Transmicion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Combustible)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Albumcar.Albumcarid)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Autoid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Autoid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Autoid">Delete</a>
+            </td>
+        </tr>
+}
+>>>>>>> 28e0bca562d72fb78f6c70cd69d1fdf83f9e913c
     </tbody>
 </table>

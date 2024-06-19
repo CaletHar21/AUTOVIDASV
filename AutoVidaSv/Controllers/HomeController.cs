@@ -98,7 +98,10 @@ namespace AutoVidaSv.Controllers
                     if (model.password == usuario.Contrasena)
                     {
                         HttpContext.Session.SetString("UsuarioID", usuario.Usuarioid.ToString());
+<<<<<<< HEAD
                         HttpContext.Session.SetString("RolID", usuario.Rolid.ToString());
+=======
+>>>>>>> 28e0bca562d72fb78f6c70cd69d1fdf83f9e913c
 
                         // Autenticación exitosa
                         return Json(new { success = true, message = "Inicio de sesión exitoso", redirect = Url.Action("Index", "Home") });
