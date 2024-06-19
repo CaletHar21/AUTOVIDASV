@@ -1,0 +1,54 @@
+﻿@model AutoVidaSv.Models.Detallemovimiento
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Detallemovimiento</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Usuarioid)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Usuarioid)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Facturacionid)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Facturacionid)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Auto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Auto.Autoid)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Renta)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Renta.Rentaid)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Venta)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Venta.Ventaid)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model?.Detallemovimientoid">Edit</a> |
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+</div>

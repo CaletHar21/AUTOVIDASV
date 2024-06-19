@@ -1,0 +1,42 @@
+﻿@model AutoVidaSv.Models.Venta
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Venta</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Ventaid" />
+            <div class="form-group">
+                <label asp-for="Autoid" class="control-label"></label>
+                <input asp-for="Autoid" class="form-control" />
+                <span asp-validation-for="Autoid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fechaventa" class="control-label"></label>
+                <input asp-for="Fechaventa" class="form-control" />
+                <span asp-validation-for="Fechaventa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Valorventa" class="control-label"></label>
+                <input asp-for="Valorventa" class="form-control" />
+                <span asp-validation-for="Valorventa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success" />
+            </div>
+            <br/>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+</div>
+

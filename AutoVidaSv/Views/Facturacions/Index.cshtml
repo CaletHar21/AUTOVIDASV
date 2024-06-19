@@ -1,0 +1,47 @@
+﻿@model IEnumerable<AutoVidaSv.Models.Facturacion>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Detallemovimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuairo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Detallemovimiento.Detallemovimientoid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuairo.Usuarioid)
+            </td>
+            <td>
+                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Facturacionid">Edit</a> |
+                    <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.Facturacionid">Details</a> |
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Facturacionid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
